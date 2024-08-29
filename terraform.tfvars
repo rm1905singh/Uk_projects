@@ -38,30 +38,6 @@ subnets = {
   }
 }
 
-
-
-
-
-pips = {
-  pip1 = {
-    name                = "rmpublicip"
-    resource_group_name = "rm-resources"
-    location            = "Australia East"
-    allocation_method   = "Static"
-
-  }
-
-  pip2 = {
-    name                = "rmpublicip2"
-    resource_group_name = "rm-resources"
-    location            = "Australia East"
-    allocation_method   = "Static"
-
-  }
-}
-
-
-
 nics = {
 
   nic1 = {
@@ -139,8 +115,8 @@ vms = {
     location            = "Australia East"
     size                = "Standard_F2"
     computer_name       = "hostname2"
-    admin_username      = "adminrm"
-    admin_password      = "Password1234"
+    admin_username      = data.azurerm_key_vault.akv_block.value
+    admin_password      = data.azurerm_key_vault.akv_block.value
 
   }
 
@@ -151,14 +127,6 @@ lbs = {
     location            = "Australia East"
     resource_group_name = "rm-resources"
     pipname             = "rmpublicip"
-  }
-}
-
-keyvaults = {
-  keyvault1 = {
-    name                = "rmkeyvault1"
-    location            = "Australia East"
-    resource_group_name = "rm-resources"
   }
 }
 
